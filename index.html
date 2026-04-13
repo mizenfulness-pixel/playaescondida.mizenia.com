@@ -348,7 +348,7 @@
       </div>
     </div>
 
-    <div class="mood mood-sunset" onclick="togglePlay(this,'sunset')">
+    <div class="mood mood-sunset" onclick="toggleAudio()">
       <div class="mood-accent"></div>
       <p class="mood-time">Atardecer</p>
       <h2 class="mood-name">Sunset</h2>
@@ -438,5 +438,45 @@ function togglePlay(el, mood) {
   current = { mood, master, nodes, interval, el };
 }
 </script>
+
+<audio id="sunset-audio" src="Demos-Sunset.mp3" preload="auto"></audio>
+
+<script>
+const audio = document.getElementById('sunset-audio');
+const btn = document.getElementById('btn-sunset');
+const fill = document.getElementById('fill-sunset');
+const timeEl = document.getElementById('time-sunset');
+const card = btn.closest('.mood');
+let interval = null;
+
+function toggleAudio() {
+  if (audio.paused) {
+    audio.play();
+    btn.textContent = '⏸';
+    card.classList.add('active');
+    interval = setInterval(() => {
+      if (audio.duration) {
+        fill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+        const s = Math.floor(audio.currentTime);
+        timeEl.textContent = Math.floor(s/60) + ':' + String(s%60).padStart(2,'0');
+      }
+    }, 100);
+  } else {
+    audio.pause();
+    btn.textContent = '▶';
+    card.classList.remove('active');
+    clearInterval(interval);
+  }
+}
+
+audio.addEventListener('ended', () => {
+  btn.textContent = '▶';
+  card.classList.remove('active');
+  fill.style.width = '0%';
+  timeEl.textContent = '0:00';
+  clearInterval(interval);
+});
+</script>
+
 </body>
 </html>
