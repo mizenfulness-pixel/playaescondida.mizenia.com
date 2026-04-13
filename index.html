@@ -156,6 +156,7 @@
   }
 
   .mood:hover { background: rgba(255,255,255,0.03); }
+  .mood-sunrise, .mood-daylight, .mood-grounding { opacity: 0.35; cursor: default; }
   .mood.active { background: rgba(255,255,255,0.05); }
 
   .mood-accent {
@@ -324,25 +325,25 @@
 <section class="moods">
   <div class="moods-inner">
 
-    <div class="mood mood-sunrise" onclick="togglePlay(this,'sunrise')">
+    <div class="mood mood-sunrise" >
       <div class="mood-accent"></div>
       <p class="mood-time">Amanecer</p>
       <h2 class="mood-name">Sunrise</h2>
       <p class="mood-feel">Despertar suave. Selva en calma.</p>
       <div class="mini-player">
-        <button class="play-btn" id="btn-sunrise">▶</button>
+        <button class="play-btn" id="btn-sunrise" disabled style="opacity:0.4;cursor:default;">▶</button>
         <div class="track-bar"><div class="track-fill" id="fill-sunrise"></div></div>
         <span class="track-time" id="time-sunrise">0:00</span>
       </div>
     </div>
 
-    <div class="mood mood-daylight" onclick="togglePlay(this,'daylight')">
+    <div class="mood mood-daylight" >
       <div class="mood-accent"></div>
       <p class="mood-time">Día</p>
       <h2 class="mood-name">Daylight</h2>
       <p class="mood-feel">Brisa, alberca, palmeras.</p>
       <div class="mini-player">
-        <button class="play-btn" id="btn-daylight">▶</button>
+        <button class="play-btn" id="btn-daylight" disabled style="opacity:0.4;cursor:default;">▶</button>
         <div class="track-bar"><div class="track-fill" id="fill-daylight"></div></div>
         <span class="track-time" id="time-daylight">0:00</span>
       </div>
@@ -360,13 +361,13 @@
       </div>
     </div>
 
-    <div class="mood mood-grounding" onclick="togglePlay(this,'grounding')">
+    <div class="mood mood-grounding" >
       <div class="mood-accent"></div>
       <p class="mood-time">Noche</p>
       <h2 class="mood-name">Grounding</h2>
       <p class="mood-feel">Descanso profundo. Selva viva.</p>
       <div class="mini-player">
-        <button class="play-btn" id="btn-grounding">▶</button>
+        <button class="play-btn" id="btn-grounding" disabled style="opacity:0.4;cursor:default;">▶</button>
         <div class="track-bar"><div class="track-fill" id="fill-grounding"></div></div>
         <span class="track-time" id="time-grounding">0:00</span>
       </div>
@@ -439,7 +440,7 @@ function togglePlay(el, mood) {
 }
 </script>
 
-<audio id="sunset-audio" src="Demos-Sunset.mp3" preload="auto"></audio>
+<audio id="sunset-audio" src="Demo-Sunset.mp3" preload="auto"></audio>
 
 <script>
 const audio = document.getElementById('sunset-audio');
